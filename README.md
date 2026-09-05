@@ -142,9 +142,9 @@ cd MoodMentor-Razorpay
 
 Bash
 python -m venv venv
-# On Windows:
+#On Windows:
 venv\Scripts\activate
-# On macOS/Linux:
+#On macOS/Linux:
 source venv/bin/activate
 
 3.Install Core Dependencies:
@@ -181,10 +181,10 @@ Bash
 streamlit run app.py
 🧪 Testing & Verification Scenarios
 
-# Test Case 1: Positive Professional Flow
+## Test Case 1: Positive Professional Flow
 Input Text: "Successfully closed the Sprint objectives ahead of schedule today with amazing team collaboration."
 
-# Expected Output:
+## Expected Output:
 
 Sentiment: Positive 😊 (Compound: +0.88)
 
@@ -192,10 +192,10 @@ Emotion: Happy (Confidence: 99%)
 
 Database: Successfully committed to mood_logs with source='nlp'.
 
-# Test Case 2: High Burnout / Stress Flow
+## Test Case 2: High Burnout / Stress Flow
 Input Text: "Working 16-hour shifts every day this week without a break is destroying my health and sleep cycle."
 
-# Expected Output:
+## Expected Output:
 
 Sentiment: Negative 📉 (Compound: -0.74)
 

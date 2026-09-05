@@ -1,50 +1,76 @@
-# MoodMentor 🧠 — AI-Powered Employee Wellness Platform
+# 🧠 MoodMentor — AI-Powered Employee Wellness & Sentiment Platform
 **Razorpay AI Buildathon Submission**
 
-## Project Objective
-The objective of this project is to integrate emotion detection, sentiment scoring, and journal management with database persistence into the Employee Wellness Management platform. This allows the system to analyze daily journal entries, predict dominant emotions, and compute VADER sentiment scores to track employee well-being.
+<p align="center">
+  <b>Transforming workplace well-being through real-time multilingual NLP, sentiment tracking, and empathetic AI support.</b>
+</p>
 
-## Model Used
-* **Emotion Detection:** `bhadresh-savani/bert-base-go-emotion` (Transformer-based BERT model)
-* **Sentiment Analysis:** VADER (Valence Aware Dictionary and sEntiment Reasoner)
-* **Text Preprocessing:** `spaCy`, `ftfy`, `langdetect`, `stopwordsiso`, and `deep-translator`.
-* **Conversational AI:** `Qwen/Qwen2.5-0.5B-Instruct` for empathetic workplace wellness support.
+---
 
-## Architecture & Pipeline
-1. **Frontend & Backend Separation:** Streamlit handles the user interface for employee self-service, management reports, and face recognition, while FastAPI handles secure routing and NLP execution.
-2. **Emotion Detection Pipeline:** User journal entries or uploaded files pass through text normalization, language detection, emoji removal, translation to English, stopword removal, and lemmatization before being classified by the BERT Emotion pipeline into 6 core app labels.
-3. **Sentiment Analysis:** VADER computes polarity scores, generating positive, negative, neutral, and compound scores stored in PostgreSQL.
+## 🚀 Project Overview & Working Mechanism
+MoodMentor bridges the gap between raw employee feedback and actionable HR analytics. Traditional surveys suffer from low response rates and severe delays. MoodMentor solves this by capturing real-time journal entries, check-ins, and multilingual text, processing them instantly through a robust dual-layer intelligence architecture.
 
-## Confidence Score Calculation
-The confidence score is derived directly from the Hugging Face `pipeline` output, returning probability scores for all mapped labels where the score corresponding to the dominant predicted emotion is extracted and stored as a percentage.
+### **How It Works (Workflow)**
+1. **Data Ingestion:** The user logs daily moods via emoji pickers, detailed journal notes, or file uploads (.csv/.txt) via the **Streamlit** frontend interface.
+2. **Multilingual NLP Pipeline:** Input text flows through normalization, language detection, emoji preservation, translation, stopword filtering, and lemmatization.
+3. **Dual-Model Inference:** 
+   - **VADER** computes fast deterministic polarity and compound sentiment scores.
+   - **BERT (`bert-base-go-emotion`)** maps complex emotional language down to core workplace sentiment classes.
+4. **Persistence & Analytics:** Structured insights, confidence metrics, and compound scores are securely committed to a **PostgreSQL** relational database, powering automated weekly PDF reports and managerial dashboards.
 
-## Database Schema (PostgreSQL)
-The persistence layer utilizes structured tables including `users`, `otp_codes`, `daily_wellness`, and `mood_logs`:
-* `id` (SERIAL PRIMARY KEY)
-* `user_id` (INTEGER FK to users table)
-* `mood_date` (DATE)
-* `sentiment` (VARCHAR) - Derived from VADER
-* `emotion` (VARCHAR) - Derived from BERT
-* `compound_score` (REAL)
-* `confidence` (REAL)
-* `journal_text` (TEXT)
-* `source` (VARCHAR) - e.g., 'nlp' or 'manual'
+---
 
-## API Endpoints (FastAPI)
-* `POST /analyze-text`: Accepts raw text from the Journal, runs the full NLP pipeline, and returns emotion and sentiment JSON data.
-* `POST /analyze`: Accepts `.csv` or `.txt` file uploads, extracts text, runs the NLP pipeline, and returns analysis.
-* `POST /chat`: Support chatbot endpoint utilizing Qwen2.5 to provide wellness responses with safety guardrails.
+## 🛠️ Technology Stack & Models
 
-## Sample Input & Output
-**Input:** "I had a highly productive day today and felt great!"
-**Output:** 
-- Final Sentiment: Positive 😊 (Compound: 0.82)
-- Final Emotion: Happy 😊 (Confidence: 96%)
-- Emotion Distribution: Happy (0.96), Neutral (0.02), etc.
+| Component | Technology / Model | Purpose |
+| :--- | :--- | :--- |
+| **Frontend** | 📊 **Streamlit** | Interactive UI for employee portals, grids, and analytics. |
+| **Backend** | ⚡ **FastAPI** | High-performance REST API routing requests and handling auth. |
+| **Database** | 🐘 **PostgreSQL (Neon)** | Relational storage for users, roles, and historical wellness data. |
+| **Emotion AI** | 🤖 `bhadresh-savani/bert-base-go-emotion` | Fine-tuned Transformer model mapping 28 granular emotions. |
+| **Sentiment AI** | 📈 **VADER Sentiment** | Lexicon-rule-based engine calculating polarity and compound metrics. |
+| **Conversational AI** | 💬 `Qwen/Qwen2.5-0.5B-Instruct` | Empathetic workplace chatbot with hardcoded crisis guardrails. |
+| **Text Processing** | 🔤 `spaCy`, `stopwordsiso`, `deep-translator` | Multilingual tokenization, cleanup, and translation framework. |
 
-## Running Locally
-1. Install the requirements:
+---
+
+## 🔌 API Endpoints & Architecture
+
+* **`POST /analyze-text`**
+  * *Input:* Raw text payload from the Journal interface.
+  * *Output:* JSON payload containing detected language, token metrics, VADER polarity scores, and BERT emotion breakdown.
+* **`POST /analyze`**
+  * *Input:* Multi-row `.csv` or `.txt` file upload.
+  * *Output:* Aggregated bulk sentiment metrics and distribution summaries.
+* **`POST /chat`**
+  * *Input:* User chat query and conversation history array.
+  * *Output:* Contextual, safe wellness recommendation generated by Qwen2.5.
+
+---
+
+## 📊 Sample Inputs & Outputs
+
+### **Example 1: Positive Journal Entry**
+* **📥 Input Text:** 
+  > *"I had an incredible planning session today and successfully deployed our new feature stack!"*
+* **📤 Output Response:**
+  * **Final Sentiment:** Positive 😊 *(Compound Score: `0.85`)*
+  * **Final Emotion:** Happy 😃 *(Confidence: `98%`)*
+  * **Emotion Distribution:** Happy (`0.98`), Neutral (`0.02`)
+
+### **Example 2: High-Stress Workload Entry**
+* **📥 Input Text:** 
+  > *"The deadlines are piling up simultaneously and I am completely overwhelmed trying to balance everything."*
+* **📤 Output Response:**
+  * **Final Sentiment:** Negative 📉 *(Compound Score: `-0.62`)*
+  * **Final Emotion:** Stress 🤯 *(Confidence: `91%`)*
+  * **Emotion Distribution:** Stress (`0.91`), Sad (`0.07`), Neutral (`0.02`)
+
+---
+
+## ⚙️ Local Installation & Setup
+
+1. **Clone the Repository:**
    ```bash
-   pip install -r requirements.txt
-   python -m spacy download xx_sent_ud_sm
-   
+   git clone [https://github.com/Omkar-IT/MoodMentor-Razorpay.git](https://github.com/Omkar-IT/MoodMentor-Razorpay.git)
+   cd MoodMentor-Razorpay

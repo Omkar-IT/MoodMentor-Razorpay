@@ -74,6 +74,8 @@ This repository showcases:
  ║  │ users (Auth)  │  │ otp_codes     │  │ daily_wellness │  │ mood_logs (NLP) │    ║
  ╚═══════════════════════════════════════════════════════════════════════════════════╝
 
+---
+
 # 🧠 Deep-Dive: The Multilingual NLP & AI Pipeline
 
 MoodMentor does not rely on naive keyword matching. Every piece of employee text goes through a rigorous 7-stage transformation pipeline inside `nlp_pipeline.py`:

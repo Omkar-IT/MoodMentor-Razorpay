@@ -20,7 +20,7 @@
 
 ---
 
-## 🎯 <u><b>Why MoodMentor Stands Out for Razorpay</b></u>
+# 🎯 <u><b>Why MoodMentor Stands Out for Razorpay</b></u>
 Modern high-growth fintech environments like Razorpay demand engineering excellence that goes beyond basic CRUD applications. **MoodMentor** solves an enterprise-scale organizational challenge: preventing burnout, tracking retention risk, and ensuring psychological safety at scale without compromising data privacy or server performance. 
 
 This repository showcases:
@@ -31,7 +31,7 @@ This repository showcases:
 
 ---
 
-## 🏗️ <u><b>3D-Style Enterprise Architecture & System Topology</b></u>
+# 🏗️ <u><b>3D-Style Enterprise Architecture & System Topology</b></u>
 
 ```ascii
                           [ CLIENT LAYER: Browser / Mobile ]
@@ -103,7 +103,7 @@ MoodMentor does not rely on naive keyword matching. Every piece of employee text
 
 ---
 
-## 🛡️ Safety Engineering & Crisis Interception
+# 🛡️ Safety Engineering & Crisis Interception
 
 In mental health and employee wellness applications, hallucinations or inappropriate model behavior are catastrophic failure points.
 
@@ -113,7 +113,7 @@ In mental health and employee wellness applications, hallucinations or inappropr
 
 ---
 
-## 📈 Automated PDF Reporting Engine
+# 📈 Automated PDF Reporting Engine
 
 Using `reportlab`, MoodMentor generates executive-ready, downloadable weekly wellness dossiers (`weekly_report.py`). The engine:
 
@@ -123,7 +123,7 @@ Using `reportlab`, MoodMentor generates executive-ready, downloadable weekly wel
 
 ---
 
-## 💻 Complete Installation & Deployment Guide
+# 💻 Complete Installation & Deployment Guide
 
 ### Prerequisites
 * Python 3.10 or higher
@@ -181,6 +181,8 @@ uvicorn backend:app --reload --port 8000
 Bash
 streamlit run app.py
 🧪 Testing & Verification Scenarios
+
+# Sample Test Cases
 
 ## Test Case 1: Positive Professional Flow
 Input Text: "Successfully closed the Sprint objectives ahead of schedule today with amazing team collaboration."

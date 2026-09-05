@@ -94,12 +94,12 @@ This repository showcases:
 
 ## 📊 Comprehensive API Specification
 
-### | Endpoint | Method | Authentication | Description | Payload / Response Schema |
-### | :--- | :--- | :--- | :--- | :--- |
-### | `/health` | GET | Public | System liveness probe. | Returns `{"status": "ok"}` |
-### | `/analyze-text` | POST | Bearer JWT | Analyzes raw text string from Journal UI. | **In:** `{"text": "string"}`<br>**Out:** Sentiment scores, BERT vector, confidence %. |
-### | `/analyze` | POST | Bearer JWT | Bulk batch processing for uploaded CSV/TXT files. | **In:** Multipart file<br>**Out:** Aggregate distribution metrics. |
-### | `/chat` | POST | Bearer JWT | Conversational AI support session handler. | **In:** `{"message": "string", "history": [...]}`<br>**Out:** `{"reply": "string", "flagged": bool}` |
+| Endpoint | Method | Authentication | Description | Payload / Response Schema |
+| :--- | :--- | :--- | :--- | :--- |
+| `/health` | GET | Public | System liveness probe. | Returns `{"status": "ok"}` |
+| `/analyze-text` | POST | Bearer JWT | Analyzes raw text string from Journal UI. | **In:** `{"text": "string"}`<br>**Out:** Sentiment scores, BERT vector, confidence %. |
+| `/analyze` | POST | Bearer JWT | Bulk batch processing for uploaded CSV/TXT files. | **In:** Multipart file<br>**Out:** Aggregate distribution metrics. |
+| `/chat` | POST | Bearer JWT | Conversational AI support session handler. | **In:** `{"message": "string", "history": [...]}`<br>**Out:** `{"reply": "string", "flagged": bool}` |
 
 ---
 

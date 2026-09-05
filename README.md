@@ -92,7 +92,7 @@ This repository showcases:
 
 ---
 
-## 📊 Comprehensive API Specification
+# 📊 Comprehensive API Specification
 
 | Endpoint | Method | Authentication | Description | Payload / Response Schema |
 | :--- | :--- | :--- | :--- | :--- |

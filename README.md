@@ -78,7 +78,7 @@ This repository showcases:
 
 # 🧠 Deep-Dive: The Multilingual NLP & AI Pipeline
 
-MoodMentor does not rely on naive keyword matching. Every piece of employee text goes through a rigorous 7-stage transformation pipeline inside `nlp_pipeline.py`:
+## MoodMentor does not rely on naive keyword matching. Every piece of employee text goes through a rigorous 7-stage transformation pipeline inside `nlp_pipeline.py`:
 
 * **1.Text Normalization (`ftfy`)**: Fixes broken unicode, mojibake, and malformed character encodings automatically.
 * **2.Language Identification (`langdetect`)**: Detects the ISO 639-1 language code across 50+ supported global languages.
@@ -94,18 +94,18 @@ MoodMentor does not rely on naive keyword matching. Every piece of employee text
 
 ## 📊 Comprehensive API Specification
 
-| Endpoint | Method | Authentication | Description | Payload / Response Schema |
-| :--- | :--- | :--- | :--- | :--- |
-| `/health` | GET | Public | System liveness probe. | Returns `{"status": "ok"}` |
-| `/analyze-text` | POST | Bearer JWT | Analyzes raw text string from Journal UI. | **In:** `{"text": "string"}`<br>**Out:** Sentiment scores, BERT vector, confidence %. |
-| `/analyze` | POST | Bearer JWT | Bulk batch processing for uploaded CSV/TXT files. | **In:** Multipart file<br>**Out:** Aggregate distribution metrics. |
-| `/chat` | POST | Bearer JWT | Conversational AI support session handler. | **In:** `{"message": "string", "history": [...]}`<br>**Out:** `{"reply": "string", "flagged": bool}` |
+### | Endpoint | Method | Authentication | Description | Payload / Response Schema |
+### | :--- | :--- | :--- | :--- | :--- |
+### | `/health` | GET | Public | System liveness probe. | Returns `{"status": "ok"}` |
+### | `/analyze-text` | POST | Bearer JWT | Analyzes raw text string from Journal UI. | **In:** `{"text": "string"}`<br>**Out:** Sentiment scores, BERT vector, confidence %. |
+### | `/analyze` | POST | Bearer JWT | Bulk batch processing for uploaded CSV/TXT files. | **In:** Multipart file<br>**Out:** Aggregate distribution metrics. |
+### | `/chat` | POST | Bearer JWT | Conversational AI support session handler. | **In:** `{"message": "string", "history": [...]}`<br>**Out:** `{"reply": "string", "flagged": bool}` |
 
 ---
 
 # 🛡️ Safety Engineering & Crisis Interception
 
-In mental health and employee wellness applications, hallucinations or inappropriate model behavior are catastrophic failure points.
+### In mental health and employee wellness applications, hallucinations or inappropriate model behavior are catastrophic failure points.
 
 * **1.Upstream Guardrails**: Before any prompt hits the `Qwen/Qwen2.5-0.5B-Instruct` generative weights, the input string passes through `_contains_crisis_language()`.
 * **2.Immediate Fallback**: If self-harm, suicidal ideation, or acute crisis keywords are detected, the LLM execution thread is bypassed entirely.
@@ -115,7 +115,7 @@ In mental health and employee wellness applications, hallucinations or inappropr
 
 # 📈 Automated PDF Reporting Engine
 
-Using `reportlab`, MoodMentor generates executive-ready, downloadable weekly wellness dossiers (`weekly_report.py`). The engine:
+### Using `reportlab`, MoodMentor generates executive-ready, downloadable weekly wellness dossiers (`weekly_report.py`). The engine:
 
 * Computes weighted scoring matrices across daily moods, journal consistency, sleep hours, stress levels, and workload distributions.
 * Automatically handles missing data by normalizing active weights rather than penalizing employees with unfair zero-scores.

@@ -73,7 +73,7 @@ This repository showcases:
  ║  ┌───────────────┐  ┌───────────────┐  ┌────────────────┐  ┌─────────────────┐    ║
  ║  │ users (Auth)  │  │ otp_codes     │  │ daily_wellness │  │ mood_logs (NLP) │    ║
  ╚═══════════════════════════════════════════════════════════════════════════════════╝
-
+```
 ---
 
 # 🧠 Deep-Dive: The Multilingual NLP & AI Pipeline
@@ -132,12 +132,13 @@ Using `reportlab`, MoodMentor generates executive-ready, downloadable weekly wel
 
 ### Step-by-Step Local Setup
 
-Clone the Repository:
+1.Clone the Repository:
 
 Bash
 git clone [https://github.com/Omkar-IT/MoodMentor-Razorpay.git](https://github.com/Omkar-IT/MoodMentor-Razorpay.git)
 cd MoodMentor-Razorpay
-Create and Activate a Virtual Environment:
+
+2.Create and Activate a Virtual Environment:
 
 Bash
 python -m venv venv
@@ -145,16 +146,19 @@ python -m venv venv
 venv\Scripts\activate
 # On macOS/Linux:
 source venv/bin/activate
-Install Core Dependencies:
+
+3.Install Core Dependencies:
 
 Bash
 pip install -r requirements.txt
-Download the spaCy Multilingual Language Model:
+
+4.Download the spaCy Multilingual Language Model:
 
 Bash
 python -m spacy download xx_sent_ud_sm
 Configure Environment Variables (.env):
-Create a .env file in the root directory with your configuration:
+
+5.Create a .env file in the root directory with your configuration:
 
 Code snippet
 DB_HOST=your-neon-db-host.tech
@@ -165,19 +169,22 @@ DB_PASSWORD=your_secure_password
 JWT_SECRET=generate_a_long_random_jwt_secret_string_here
 SMTP_EMAIL=your_email@gmail.com
 SMTP_APP_PASSWORD=your_gmail_app_password
-Run the FastAPI Backend Server:
+
+6.Run the FastAPI Backend Server:
 
 Bash
 uvicorn backend:app --reload --port 8000
-Launch the Streamlit Frontend (In a Separate Terminal):
+
+7.Launch the Streamlit Frontend (In a Separate Terminal):
 
 Bash
 streamlit run app.py
 🧪 Testing & Verification Scenarios
-Test Case 1: Positive Professional Flow
+
+# Test Case 1: Positive Professional Flow
 Input Text: "Successfully closed the Sprint objectives ahead of schedule today with amazing team collaboration."
 
-Expected Output:
+# Expected Output:
 
 Sentiment: Positive 😊 (Compound: +0.88)
 
@@ -185,10 +192,10 @@ Emotion: Happy (Confidence: 99%)
 
 Database: Successfully committed to mood_logs with source='nlp'.
 
-Test Case 2: High Burnout / Stress Flow
+# Test Case 2: High Burnout / Stress Flow
 Input Text: "Working 16-hour shifts every day this week without a break is destroying my health and sleep cycle."
 
-Expected Output:
+# Expected Output:
 
 Sentiment: Negative 📉 (Compound: -0.74)
 
@@ -196,7 +203,7 @@ Emotion: Stress (Confidence: 95%)
 
 Dashboard Flag: Reflected immediately on the Manager Analytics aggregate trend line.
 
-🏆 Key Engineering Takeaways & Lessons Learned
+# 🏆 Key Engineering Takeaways & Lessons Learned
 Zero Hardcoded Multilingual Limits: By integrating stopwordsiso, the platform natively supports stopword filtering across over 50 languages without requiring manual lexicon maintenance.
 
 Memory Optimization: Initial pipeline iterations suffered from heavy memory footprints when loading transformer models on every endpoint trigger. Implementing a module-level singleton lazy loader (_get_bert_emotion_pipeline()) reduced request latency by over 80%.

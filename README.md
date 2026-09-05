@@ -130,15 +130,16 @@ Using `reportlab`, MoodMentor generates executive-ready, downloadable weekly wel
 * PostgreSQL instance (e.g., Neon, Supabase, or local)
 * Git installed on your system
 
-### Step-by-Step Local Setup
+### Step-by-Step Local Setup:
 
-1.Clone the Repository:
+
+### 1.Clone the Repository:
 
 Bash
 git clone [https://github.com/Omkar-IT/MoodMentor-Razorpay.git](https://github.com/Omkar-IT/MoodMentor-Razorpay.git)
 cd MoodMentor-Razorpay
 
-2.Create and Activate a Virtual Environment:
+### 2.Create and Activate a Virtual Environment:
 
 Bash
 python -m venv venv
@@ -147,18 +148,18 @@ venv\Scripts\activate
 #On macOS/Linux:
 source venv/bin/activate
 
-3.Install Core Dependencies:
+### 3.Install Core Dependencies:
 
 Bash
 pip install -r requirements.txt
 
-4.Download the spaCy Multilingual Language Model:
+### 4.Download the spaCy Multilingual Language Model:
 
 Bash
 python -m spacy download xx_sent_ud_sm
 Configure Environment Variables (.env):
 
-5.Create a .env file in the root directory with your configuration:
+### 5.Create a .env file in the root directory with your configuration:
 
 Code snippet
 DB_HOST=your-neon-db-host.tech
@@ -170,12 +171,12 @@ JWT_SECRET=generate_a_long_random_jwt_secret_string_here
 SMTP_EMAIL=your_email@gmail.com
 SMTP_APP_PASSWORD=your_gmail_app_password
 
-6.Run the FastAPI Backend Server:
+### 6.Run the FastAPI Backend Server:
 
 Bash
 uvicorn backend:app --reload --port 8000
 
-7.Launch the Streamlit Frontend (In a Separate Terminal):
+### 7.Launch the Streamlit Frontend (In a Separate Terminal):
 
 Bash
 streamlit run app.py
@@ -204,8 +205,9 @@ Emotion: Stress (Confidence: 95%)
 Dashboard Flag: Reflected immediately on the Manager Analytics aggregate trend line.
 
 # 🏆 Key Engineering Takeaways & Lessons Learned
-Zero Hardcoded Multilingual Limits: By integrating stopwordsiso, the platform natively supports stopword filtering across over 50 languages without requiring manual lexicon maintenance.
 
-Memory Optimization: Initial pipeline iterations suffered from heavy memory footprints when loading transformer models on every endpoint trigger. Implementing a module-level singleton lazy loader (_get_bert_emotion_pipeline()) reduced request latency by over 80%.
+### 1.Zero Hardcoded Multilingual Limits: By integrating stopwordsiso, the platform natively supports stopword filtering across over 50 languages without requiring manual lexicon maintenance.
 
-Resilient Graceful Degradation: When third-party SMTP servers or cloud database firewalls restrict outbound ports (such as Render free tier limitations on port 587), the application provides seamless fallback mechanisms and transparent terminal logging to ensure zero friction during evaluations.
+### 2.Memory Optimization: Initial pipeline iterations suffered from heavy memory footprints when loading transformer models on every endpoint trigger. Implementing a module-level singleton lazy loader (_get_bert_emotion_pipeline()) reduced request latency by over 80%.
+
+### 3.Resilient Graceful Degradation: When third-party SMTP servers or cloud database firewalls restrict outbound ports (such as Render free tier limitations on port 587), the application provides seamless fallback mechanisms and transparent terminal logging to ensure zero friction during evaluations.

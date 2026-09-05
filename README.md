@@ -1,74 +1,80 @@
-# 🧠 MoodMentor — AI-Powered Employee Wellness & Sentiment Platform
-**Razorpay AI Buildathon Submission**
+# <div align="center">🧠 MoodMentor — AI-Powered Employee Wellness & Sentiment Platform</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Razorpay-AI%20Buildathon-blue?style=for-the-badge" alt="Buildathon">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-purple?style=for-the-badge" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?style=for-the-badge" alt="Streamlit">
+</p>
 
 <p align="center">
-  <b>Transforming workplace well-being through real-time multilingual NLP, sentiment tracking, and empathetic AI support.</b>
+  <b>Transforming organizational well-being through real-time multilingual NLP, precision sentiment tracking, and compassionate AI support.</b>
 </p>
 
 ---
 
-## 🚀 Project Overview & Working Mechanism
-MoodMentor bridges the gap between raw employee feedback and actionable HR analytics. Traditional surveys suffer from low response rates and severe delays. MoodMentor solves this by capturing real-time journal entries, check-ins, and multilingual text, processing them instantly through a robust dual-layer intelligence architecture.
+## 🌟 Executive Summary & Working Mechanism
+Traditional annual engagement surveys are broken: they arrive months too late, suffer from low response rates, and miss acute emotional friction. **MoodMentor** bridges this gap by capturing real-time employee journals, check-ins, and multilingual text inputs, processing them instantly through a powerful dual-layer intelligence pipeline.
 
-### **How It Works (Workflow)**
-1. **Data Ingestion:** The user logs daily moods via emoji pickers, detailed journal notes, or file uploads (.csv/.txt) via the **Streamlit** frontend interface.
-2. **Multilingual NLP Pipeline:** Input text flows through normalization, language detection, emoji preservation, translation, stopword filtering, and lemmatization.
-3. **Dual-Model Inference:** 
-   - **VADER** computes fast deterministic polarity and compound sentiment scores.
-   - **BERT (`bert-base-go-emotion`)** maps complex emotional language down to core workplace sentiment classes.
-4. **Persistence & Analytics:** Structured insights, confidence metrics, and compound scores are securely committed to a **PostgreSQL** relational database, powering automated weekly PDF reports and managerial dashboards.
+### **The Architecture Lifecycle ⚙️**
+1. **📥 Data Ingestion:** Employees log check-ins via interactive emoji grids, free-form journals, or bulk dataset uploads (`.csv` / `.txt`).
+2. **🧹 Multilingual NLP Engine:** Raw input passes through text normalization, language detection, emoji preservation, translation, stopword filtering, and lemmatization.
+3. **🤖 Dual-Model Intelligence:** 
+   - **VADER:** Computes fast, deterministic polarity and compound sentiment scores.
+   - **BERT (`bert-base-go-emotion`)** Classifies deep emotional drivers down to core workplace sentiment categories.
+4. **💾 Persistence & Reporting:** Structured scores, confidence metrics, and compound logs are committed to **PostgreSQL**, driving automated weekly PDF summaries and managerial visibility panels.
 
 ---
 
-## 🛠️ Technology Stack & Models
+## 🛠️ Technology Stack & AI Models
 
-| Component | Technology / Model | Purpose |
+| Layer | Technology / Model | Core Purpose |
 | :--- | :--- | :--- |
-| **Frontend** | 📊 **Streamlit** | Interactive UI for employee portals, grids, and analytics. |
-| **Backend** | ⚡ **FastAPI** | High-performance REST API routing requests and handling auth. |
-| **Database** | 🐘 **PostgreSQL (Neon)** | Relational storage for users, roles, and historical wellness data. |
-| **Emotion AI** | 🤖 `bhadresh-savani/bert-base-go-emotion` | Fine-tuned Transformer model mapping 28 granular emotions. |
-| **Sentiment AI** | 📈 **VADER Sentiment** | Lexicon-rule-based engine calculating polarity and compound metrics. |
-| **Conversational AI** | 💬 `Qwen/Qwen2.5-0.5B-Instruct` | Empathetic workplace chatbot with hardcoded crisis guardrails. |
-| **Text Processing** | 🔤 `spaCy`, `stopwordsiso`, `deep-translator` | Multilingual tokenization, cleanup, and translation framework. |
+| **Frontend UI** | 📊 **Streamlit** | Responsive, dynamic user experience for self-service & analytics. |
+| **Backend API** | ⚡ **FastAPI** | Asynchronous REST routing, middleware orchestration, and secure auth. |
+| **Database** | 🐘 **PostgreSQL (Neon)** | Scalable relational storage for user profiles, roles, and mood history. |
+| **Emotion AI** | 🤖 `bhadresh-savani/bert-base-go-emotion` | Transformer model mapping granular emotions to core classes. |
+| **Sentiment AI** | 📈 **VADER Sentiment** | Lexicon-rule engine calculating polarity and compound intensity. |
+| **Conversational AI** | 💬 `Qwen/Qwen2.5-0.5B-Instruct` | Empathetic workplace chatbot with strict safety guardrails. |
+| **Text Processing** | 🔤 `spaCy`, `stopwordsiso`, `deep-translator` | Multilingual tokenization, cleanup, and translation frameworks. |
 
 ---
 
-## 🔌 API Endpoints & Architecture
+## 🔌 Core API Architecture & Endpoints
 
 * **`POST /analyze-text`**
-  * *Input:* Raw text payload from the Journal interface.
-  * *Output:* JSON payload containing detected language, token metrics, VADER polarity scores, and BERT emotion breakdown.
+  * *Payload:* Raw text input from the journaling module.
+  * *Response:* JSON containing language codes, text stats, VADER polarity breakdowns, and BERT emotion vectors.
 * **`POST /analyze`**
-  * *Input:* Multi-row `.csv` or `.txt` file upload.
-  * *Output:* Aggregated bulk sentiment metrics and distribution summaries.
+  * *Payload:* Multi-row `.csv` or `.txt` batch upload.
+  * *Response:* Aggregated organization wellness scores and bulk distribution statistics.
 * **`POST /chat`**
-  * *Input:* User chat query and conversation history array.
-  * *Output:* Contextual, safe wellness recommendation generated by Qwen2.5.
+  * *Payload:* User query string and recent chat context window.
+  * *Response:* Context-aware, supportive wellness response generated via Qwen2.5.
 
 ---
 
-## 📊 Sample Inputs & Outputs
+## 📊 Live Sample Inputs & Outputs
 
-### **Example 1: Positive Journal Entry**
+### **Scenario A: Positive Engagement Entry**
 * **📥 Input Text:** 
   > *"I had an incredible planning session today and successfully deployed our new feature stack!"*
-* **📤 Output Response:**
-  * **Final Sentiment:** Positive 😊 *(Compound Score: `0.85`)*
-  * **Final Emotion:** Happy 😃 *(Confidence: `98%`)*
-  * **Emotion Distribution:** Happy (`0.98`), Neutral (`0.02`)
+* **📤 Model Output:**
+  * **Final Sentiment:** Positive 😊 *(Compound Score: `+0.85`)*
+  * **Dominant Emotion:** Happy 😃 *(Confidence Level: `98%`)*
+  * **Distribution Vector:** Happy (`0.98`), Neutral (`0.02`)
 
-### **Example 2: High-Stress Workload Entry**
+### **Scenario B: High-Stress Workload Entry**
 * **📥 Input Text:** 
   > *"The deadlines are piling up simultaneously and I am completely overwhelmed trying to balance everything."*
-* **📤 Output Response:**
+* **📤 Model Output:**
   * **Final Sentiment:** Negative 📉 *(Compound Score: `-0.62`)*
-  * **Final Emotion:** Stress 🤯 *(Confidence: `91%`)*
-  * **Emotion Distribution:** Stress (`0.91`), Sad (`0.07`), Neutral (`0.02`)
+  * **Dominant Emotion:** Stress 🤯 *(Confidence Level: `91%`)*
+  * **Distribution Vector:** Stress (`0.91`), Sad (`0.07`), Neutral (`0.02`)
 
 ---
 
-## ⚙️ Local Installation & Setup
+## 🚀 Local Installation & Quickstart
 
 1. **Clone the Repository:**
    ```bash
